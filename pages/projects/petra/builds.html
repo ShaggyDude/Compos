@@ -6,12 +6,6 @@
   <title>petra — Builds — Cognatix</title>
   <link rel="icon" type="image/svg+xml" href="../../../images/favicon.svg">
     <link rel="stylesheet" href="../../../styles/output.css">
-  <style>
-    .sidebar-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.375rem 0.5rem; border-radius: 0.5rem; font-size: 0.875rem; transition: background 160ms; text-decoration: none; color: inherit; }
-    .sidebar-link:hover { background: var(--ink-sage-100); }
-    .sidebar-link.active { background: var(--ink-sage-600); color: var(--ink-sage-0); }
-    .sidebar-link.active .lucide { opacity: 1; }
-  </style>
 </head>
 <body class="antialiased">
   <div class="flex min-h-screen">
@@ -20,7 +14,7 @@
       <div id="header"></div>
 
       <div class="px-6 py-5">
-        <div class="raised rounded-lg overflow-hidden">
+        <div class="raised rounded overflow-hidden">
           <table class="w-full text-sm">
             <thead>
               <tr class="border-b text-xs opacity-50 uppercase tracking-wide">
@@ -36,7 +30,7 @@
               <tr class="border-b hover:bg-ink-sage-50/10 transition cursor-pointer" onclick="window.location='builds/4.html'">
                 <td class="px-4 py-3">4</td>
                 <td class="px-4 py-3">Full Analysis</td>
-                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-ink-sage-500"></span> Completed</span></td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded bg-ink-sage-500"></span> Completed</span></td>
                 <td class="px-4 py-3">4h 30m 42s</td>
                 <td class="px-4 py-3">$0.00</td>
                 <td class="px-4 py-3">Mon Mar 30 2026</td>
@@ -44,7 +38,7 @@
               <tr class="border-b hover:bg-ink-sage-50/10 transition cursor-pointer">
                 <td class="px-4 py-3">3</td>
                 <td class="px-4 py-3">Full Analysis</td>
-                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-ink-red-500"></span> Failed</span></td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded bg-ink-red-500"></span> Failed</span></td>
                 <td class="px-4 py-3">2m 56s</td>
                 <td class="px-4 py-3">$0.00</td>
                 <td class="px-4 py-3">Mon Mar 30 2026</td>
@@ -52,7 +46,7 @@
               <tr class="border-b hover:bg-ink-sage-50/10 transition cursor-pointer">
                 <td class="px-4 py-3">2</td>
                 <td class="px-4 py-3">Full Analysis</td>
-                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-ink-sage-500"></span> Completed</span></td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded bg-ink-sage-500"></span> Completed</span></td>
                 <td class="px-4 py-3">4h 27m 25s</td>
                 <td class="px-4 py-3">$0.00</td>
                 <td class="px-4 py-3">Sat Mar 28 2026</td>
@@ -60,7 +54,7 @@
               <tr class="border-b hover:bg-ink-sage-50/10 transition cursor-pointer">
                 <td class="px-4 py-3">1</td>
                 <td class="px-4 py-3">Full Analysis</td>
-                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-ink-sage-500"></span> Completed</span></td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded bg-ink-sage-500"></span> Completed</span></td>
                 <td class="px-4 py-3">10m 38s</td>
                 <td class="px-4 py-3">$0.00</td>
                 <td class="px-4 py-3">Fri Mar 27 2026</td>
@@ -79,7 +73,7 @@
   <script>
     initLayout({
       actions: `
-        <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-lg inks-sage-500 hover transition">
+        <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded inks-sage-500 hover transition">
           <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
           Rerun Analysis
         </button>

@@ -5,16 +5,26 @@ const PROJECTS = [
   { name: 'clearwave', label: 'Clearwave', slug: 'clearwave', desc: 'Insurance eligibility, patient registration, EDI transactions, HIPAA audit trails.', files: '2.1K', loc: '340.2K', functions: 34, cycle: 7, status: 'Ready', lastBuild: 'Fri Apr 04 2026' }
 ];
 
+// Detect current sub-page within a project
+function getCurrentPage(path) {
+  // Build detail (builds/4.html etc) → drop to builds list
+  if (/\/builds\/\d+\.html/.test(path)) return 'builds';
+  if (path.includes('/settings')) return 'settings';
+  if (path.includes('/analysis')) return 'analysis';
+  if (path.includes('/builds')) return 'builds';
+  return 'overview';
+}
+
 // Detect current context from URL
 function getContext() {
   const path = window.location.pathname;
   // Find which project we're in, if any
   for (const p of PROJECTS) {
     if (path.includes(`/projects/${p.slug}`)) {
-      return { scope: 'project', project: p, path };
+      return { scope: 'project', project: p, page: getCurrentPage(path), path };
     }
   }
-  return { scope: 'global', project: null, path };
+  return { scope: 'global', project: null, page: null, path };
 }
 
 // Get base path (how many levels deep are we?)
@@ -92,8 +102,8 @@ function renderSidebar(ctx) {
   return `
     <aside class="sidebar flex flex-col h-screen w-56 shrink-0 border-r fixed left-0 top-0 z-30">
       <!-- Logo -->
-      <div class="p-4 pb-2">
-        <a href="${root}projects.html" class="flex items-center gap-2 font-semibold text-lg no-underline">
+      <div class="px-6 py-8">
+        <a href="${root}projects.html" class="flex items-center gap-2 text-lg no-underline">
           <img src="${root}../images/favicon.svg" alt="Cognatix" width="18" height="30">
           <span class="text-ink-sage-1000">Cognatix</span>
         </a>
@@ -114,14 +124,14 @@ function renderSidebar(ctx) {
 
       <!-- Avatar -->
       <div class="border-t px-2 py-3">
-        <button onclick="toggleAvatarMenu()" class="avatar-btn flex items-center gap-2 w-full px-2 py-1.5 rounded-lg text-sm hover:bg-ink-sage-100/20 transition">
-          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full inks-sage-500 text-xs font-medium">S</span>
+        <button onclick="toggleAvatarMenu()" class="avatar-btn flex items-center gap-2 w-full px-2 py-1.5 rounded text-sm hover:bg-ink-sage-100/20 transition">
+          <span class="inline-flex items-center justify-center w-7 h-7 rounded inks-sage-500 text-xs font-medium">S</span>
           <span class="flex flex-col items-start leading-tight">
             <span class="text-sm font-medium">Scott</span>
             <span class="text-xs opacity-50">Cognatix</span>
           </span>
         </button>
-        <div id="avatar-menu" class="hidden absolute bottom-16 left-2 w-48 raised rounded-lg py-1 z-50">
+        <div id="avatar-menu" class="hidden absolute bottom-16 left-2 w-48 raised rounded py-1 z-50">
           <div class="px-3 py-2 border-b">
             <div class="text-sm font-medium">Scott</div>
             <div class="text-xs opacity-50">scott@sage-tech.ai</div>
@@ -147,20 +157,20 @@ function renderHeader(ctx, opts = {}) {
   if (ctx.scope === 'project') {
     projectSwitcher = `
       <div class="relative">
-        <button onclick="toggleProjectSwitcher()" class="flex items-center gap-2 text-lg font-semibold hover:opacity-80 transition">
+        <button onclick="toggleProjectSwitcher()" class="flex items-center gap-2 text-lg hover:opacity-80 transition">
           ${ctx.project.label}
           <svg class="lucide opacity-40" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
           <a href="${root}projects.html" onclick="event.stopPropagation()" class="p-1 rounded hover:bg-ink-sage-100/30 transition no-underline opacity-50 hover:opacity-100" title="Back to all projects">
             <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
           </a>
         </button>
-        <div id="project-switcher" class="hidden absolute top-full left-0 mt-2 w-72 raised rounded-lg py-1 z-50">
+        <div id="project-switcher" class="hidden absolute top-full left-0 mt-2 w-72 raised rounded py-1 z-50">
           <div class="flex items-center gap-2 px-3 py-2">
-            <input type="text" placeholder="Find Project..." class="flex-1 px-2 py-1.5 text-sm rounded-md bg-ink-gray-100/50 border border-ink-gray-200/30 outline-none">
+            <input type="text" placeholder="Find Project..." class="flex-1 px-2 py-1.5 text-sm rounded bg-ink-gray-100/50 border border-ink-gray-200/30 outline-none">
             <button onclick="toggleProjectSwitcher()" class="p-1 rounded hover:bg-ink-sage-100/30 transition text-xs opacity-50 border border-ink-gray-300/30 px-1.5 py-0.5">Esc</button>
           </div>
           ${PROJECTS.map(p => `
-            <a href="${root}projects/${p.slug}/overview.html" class="flex items-center justify-between px-3 py-2 text-sm hover:bg-ink-sage-100/20 transition no-underline">
+            <a href="${root}projects/${p.slug}/${ctx.page || 'overview'}.html" class="flex items-center justify-between px-3 py-2 text-sm hover:bg-ink-sage-100/20 transition no-underline">
               <span class="font-medium">${p.label}</span>
               ${p.slug === ctx.project?.slug ? '<svg class="lucide text-ink-sage-500" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>' : ''}
             </a>
@@ -175,7 +185,7 @@ function renderHeader(ctx, opts = {}) {
       </div>
     `;
   } else {
-    projectSwitcher = `<h1 class="text-lg font-semibold">${title || 'Projects'}</h1>`;
+    projectSwitcher = `<h1 class="text-lg">${title || 'Projects'}</h1>`;
   }
 
   let breadcrumbHtml = '';
@@ -193,7 +203,7 @@ function renderHeader(ctx, opts = {}) {
   }
 
   return `
-    <header class="flex items-center justify-between px-6 py-4 border-b">
+    <header class="flex items-center justify-between px-12 py-8 border-b">
       <div class="flex items-center gap-2">
         ${projectSwitcher}
         ${breadcrumbHtml}

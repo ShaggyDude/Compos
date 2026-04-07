@@ -6,12 +6,6 @@
   <title>Account Settings — Cognatix</title>
   <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
     <link rel="stylesheet" href="../styles/output.css">
-  <style>
-    .sidebar-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.375rem 0.5rem; border-radius: 0.5rem; font-size: 0.875rem; transition: background 160ms; text-decoration: none; color: inherit; }
-    .sidebar-link:hover { background: var(--ink-sage-100); }
-    .sidebar-link.active { background: var(--ink-sage-600); color: var(--ink-sage-0); }
-    .sidebar-link.active .lucide { opacity: 1; }
-  </style>
 </head>
 <body class="antialiased">
   <div class="flex min-h-screen">
@@ -22,9 +16,9 @@
       <div class="px-6 py-5 max-w-2xl space-y-6">
 
         <!-- Credentials -->
-        <div class="raised rounded-lg p-5">
+        <div class="raised rounded p-5">
           <h2 class="text-sm font-semibold mb-4">Credentials</h2>
-          <div class="raised rounded-lg p-4 flex items-center justify-between">
+          <div class="raised rounded p-4 flex items-center justify-between">
             <div>
               <div class="font-medium text-sm">DEFAULT_KEYPAIR</div>
               <div class="text-xs opacity-40 mt-0.5">3/25/2026</div>
@@ -41,7 +35,7 @@
             </div>
           </div>
           <div class="flex justify-end mt-3">
-            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-lg inks-sage-500 hover transition">
+            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded inks-sage-500 hover transition">
               <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
               Add Credential
             </button>
@@ -49,11 +43,11 @@
         </div>
 
         <!-- Personal -->
-        <div class="raised rounded-lg p-5">
+        <div class="raised rounded p-5">
           <h2 class="text-sm font-semibold mb-4">Personal</h2>
           <div class="flex items-center justify-between">
             <span class="text-sm opacity-60">Theme</span>
-            <div class="inline-flex rounded-lg overflow-hidden border">
+            <div class="inline-flex rounded overflow-hidden border">
               <button class="px-3 py-1.5 text-xs font-medium transition hover:bg-ink-sage-100/20" onclick="setTheme('light', this)">Light</button>
               <button class="px-3 py-1.5 text-xs font-medium inks-sage-500 transition" onclick="setTheme('system', this)">System</button>
               <button class="px-3 py-1.5 text-xs font-medium transition hover:bg-ink-sage-100/20" onclick="setTheme('dark', this)">Dark</button>
