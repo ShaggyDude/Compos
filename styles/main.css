@@ -522,7 +522,6 @@
 
   .raised {
     @apply border-border/20 relative border shadow-xs backdrop-blur-lg;
-    transform: translate3d(0, 0, 0);
     --bg: var(--inks-gray-100-bg);
     --fg: var(--inks-gray-100-fg);
     background: light-dark(oklch(from var(--bg) l c h / 0.98), oklch(from var(--bg) l c h / 0.28));
@@ -533,8 +532,8 @@
     content: " ";
   }
   .raised .raised {
-    @apply backdrop-blur-none;
-    background: light-dark(oklch(from var(--bg) l c h / 0.8), oklch(from var(--bg) l c h / 0.15));
+   background: var(--ink-gray-0);
+   color: var(--ink-gray-1000);
   }
 }
 

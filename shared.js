@@ -94,7 +94,7 @@ function renderSidebar(ctx) {
       <!-- Logo -->
       <div class="p-4 pb-2">
         <a href="${root}projects.html" class="flex items-center gap-2 font-semibold text-lg no-underline">
-          <svg class="text-ink-sage-500" width="24" height="24" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm-2 22c-4.418 0-8-3.582-8-8s3.582-8 8-8c1.848 0 3.55.627 4.906 1.681L14 16l4.906 6.319A7.962 7.962 0 0 1 14 24z"/></svg>
+          <img src="${root}../images/favicon.svg" alt="Cognatix" width="18" height="30">
           <span class="text-ink-sage-1000">Cognatix</span>
         </a>
       </div>
