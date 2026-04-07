@@ -203,12 +203,6 @@
     }
   }
 
-  @supports (corner-shape: squircle) {
-    .rounded:not(input[type="radio"]) {
-      corner-shape: squircle;
-    }
-  }
-
   input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px var(--ink-gray-50) inset !important;
   }

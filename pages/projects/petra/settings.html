@@ -31,9 +31,8 @@
               <input type="text" value="Petra" required>
             </div>
             <div class="field-group">
-              <label>Project Key</label>
-              <input type="text" value="petra">
-              <span class="hint">3-63 chars, lowercase, hyphens. Used in URLs.</span>
+              <label>Project Key — 3-63 chars, lowercase, hyphens</label>
+              <input type="text" value="petra" placeholder="Used in URLs">
             </div>
             <div class="field-group">
               <label>Description</label>
@@ -51,12 +50,11 @@
               <input type="text" value="https://github.com/openpetra/openpetra.git" required>
             </div>
             <div class="field-group">
-              <label>Credential</label>
+              <label>Credential — select for private repos, or leave None for public</label>
               <select>
                 <option>None (public repo)</option>
                 <option>DEFAULT_KEYPAIR</option>
               </select>
-              <span class="hint">Select credential for private repos, or "None" for public.</span>
             </div>
           </div>
         </div>
@@ -70,8 +68,7 @@
                 Analysis Instructions
                 <svg class="lucide opacity-40" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
               </label>
-              <textarea rows="4" placeholder="Provide context about your system's history, architecture decisions, or domain-specific terminology.">OpenPetra is a C#/.NET ERP and CRM system designed for non-profit organisations, providing donation processing, financial accounting, and contact management. The backend uses ASP.NET Web Services (ASMX/SOAP) with PostgreSQL and MySQL support and a custom ODBC abstraction layer.</textarea>
-              <span class="hint">Context/instructions for AI analysis. Improves results.</span>
+              <textarea rows="4" placeholder="Context about your system's history, architecture decisions, or domain-specific terminology. Improves analysis results.">OpenPetra is a C#/.NET ERP and CRM system designed for non-profit organisations, providing donation processing, financial accounting, and contact management. The backend uses ASP.NET Web Services (ASMX/SOAP) with PostgreSQL and MySQL support and a custom ODBC abstraction layer.</textarea>
             </div>
             <div class="field-group">
               <label>Application Subjects</label>
