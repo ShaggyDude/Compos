@@ -1,0 +1,25 @@
+{
+  "name": "compo",
+  "version": "1.0.0",
+  "description": "Concho + Comp = Compo",
+  "main": "shared.js",
+  "scripts": {
+    "build": "npx @tailwindcss/cli -i styles/main.css -o styles/output.css --content 'pages/**/*.html,shared.js'",
+    "watch": "npx @tailwindcss/cli -i styles/main.css -o styles/output.css --content 'pages/**/*.html,shared.js' --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OSGCorp/Compo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OSGCorp/Compo/issues"
+  },
+  "homepage": "https://github.com/OSGCorp/Compo#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.2.2",
+    "tailwindcss": "^4.2.2"
+  }
+}

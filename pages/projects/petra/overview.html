@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>petra — Overview — Cognatix</title>
+  <link rel="stylesheet" href="../../../styles/output.css">
+  <style>
+    .sidebar-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.375rem 0.5rem; border-radius: 0.5rem; font-size: 0.875rem; transition: background 160ms; text-decoration: none; color: inherit; }
+    .sidebar-link:hover { background: var(--ink-sage-100); }
+    .sidebar-link.active { background: var(--ink-sage-600); color: var(--ink-sage-0); }
+    .sidebar-link.active .lucide { opacity: 1; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="flex min-h-screen">
+    <div id="sidebar"></div>
+    <main class="flex-1 ml-56">
+      <div id="header"></div>
+
+      <!-- Metrics bar -->
+      <div class="grid grid-cols-4 gap-4 px-6 py-5">
+        <div class="raised rounded-lg p-5">
+          <div class="text-xs opacity-50 uppercase tracking-wide">Total Files</div>
+          <div class="text-2xl font-semibold mt-1">1.4K</div>
+        </div>
+        <div class="raised rounded-lg p-5">
+          <div class="text-xs opacity-50 uppercase tracking-wide">Lines of Code</div>
+          <div class="text-2xl font-semibold mt-1">581.9K</div>
+        </div>
+        <div class="raised rounded-lg p-5">
+          <div class="text-xs opacity-50 uppercase tracking-wide">Business Functions</div>
+          <div class="text-2xl font-semibold mt-1">20</div>
+        </div>
+        <div class="raised rounded-lg p-5">
+          <div class="text-xs opacity-50 uppercase tracking-wide">Current Cycle</div>
+          <div class="text-2xl font-semibold mt-1">4</div>
+        </div>
+      </div>
+
+      <!-- Latest build + Checklist -->
+      <div class="grid grid-cols-2 gap-4 px-6 pb-5">
+
+        <!-- Latest Build -->
+        <div class="raised rounded-lg p-5">
+          <h3 class="text-sm font-semibold mb-4">Latest Build</h3>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-sm">
+              <span class="opacity-50">Status</span>
+              <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-ink-sage-500"></span> Ready</span>
+            </div>
+            <div class="flex items-center justify-between text-sm">
+              <span class="opacity-50">Cycle</span>
+              <span>4</span>
+            </div>
+            <div class="flex items-center justify-between text-sm">
+              <span class="opacity-50">Completed</span>
+              <span>2h ago</span>
+            </div>
+            <div class="flex items-center justify-between text-sm">
+              <span class="opacity-50">Duration</span>
+              <span>4m 12s</span>
+            </div>
+            <div class="flex items-center justify-between text-sm">
+              <span class="opacity-50">Files</span>
+              <span>247</span>
+            </div>
+          </div>
+          <div class="mt-4">
+            <a href="builds/4.html" class="text-sm text-ink-sage-500 hover:underline no-underline">View Detail →</a>
+          </div>
+        </div>
+
+        <!-- Project Readiness Checklist -->
+        <div class="raised rounded-lg p-5">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-sm font-semibold">Project Readiness</h3>
+            <span class="text-xs opacity-50">3/4</span>
+          </div>
+          <div class="space-y-3">
+            <label class="flex items-center gap-3 text-sm">
+              <span class="inline-flex items-center justify-center w-5 h-5 rounded inks-sage-500 text-xs">✓</span>
+              <span>Source repository configured</span>
+            </label>
+            <label class="flex items-center gap-3 text-sm">
+              <span class="inline-flex items-center justify-center w-5 h-5 rounded inks-sage-500 text-xs">✓</span>
+              <span>Credentials set</span>
+            </label>
+            <label class="flex items-center gap-3 text-sm">
+              <span class="inline-flex items-center justify-center w-5 h-5 rounded inks-sage-500 text-xs">✓</span>
+              <span>First analysis completed</span>
+            </label>
+            <label class="flex items-center gap-3 text-sm cursor-pointer group">
+              <span class="inline-flex items-center justify-center w-5 h-5 rounded border border-ink-gray-400/40 text-xs"></span>
+              <a href="settings.html" class="text-ink-sage-500 hover:underline no-underline group-hover:underline">Add analysis instructions</a>
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Recent Builds -->
+      <div class="px-6 pb-8">
+        <div class="raised rounded-lg overflow-hidden">
+          <div class="px-5 py-3 border-b">
+            <h3 class="text-sm font-semibold">Recent Builds</h3>
+          </div>
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b text-xs opacity-50 uppercase tracking-wide">
+                <th class="text-left px-4 py-2 font-medium">Cycle</th>
+                <th class="text-left px-4 py-2 font-medium">Status</th>
+                <th class="text-left px-4 py-2 font-medium">Duration</th>
+                <th class="text-left px-4 py-2 font-medium">Completed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b hover:bg-ink-sage-50/10 transition cursor-pointer" onclick="window.location='builds/4.html'">
+                <td class="px-4 py-2.5">4</td>
+                <td class="px-4 py-2.5"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-ink-sage-500"></span> Ready</span></td>
+                <td class="px-4 py-2.5">4m 12s</td>
+                <td class="px-4 py-2.5">Mar 31</td>
+              </tr>
+              <tr class="border-b hover:bg-ink-sage-50/10 transition cursor-pointer">
+                <td class="px-4 py-2.5">3</td>
+                <td class="px-4 py-2.5"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-ink-red-500"></span> Error</span></td>
+                <td class="px-4 py-2.5">2m 56s</td>
+                <td class="px-4 py-2.5">Mar 30</td>
+              </tr>
+              <tr class="border-b hover:bg-ink-sage-50/10 transition cursor-pointer">
+                <td class="px-4 py-2.5">2</td>
+                <td class="px-4 py-2.5"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-ink-sage-500"></span> Ready</span></td>
+                <td class="px-4 py-2.5">4h 27m</td>
+                <td class="px-4 py-2.5">Mar 28</td>
+              </tr>
+              <tr class="border-b hover:bg-ink-sage-50/10 transition cursor-pointer">
+                <td class="px-4 py-2.5">1</td>
+                <td class="px-4 py-2.5"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-ink-sage-500"></span> Ready</span></td>
+                <td class="px-4 py-2.5">10m 38s</td>
+                <td class="px-4 py-2.5">Mar 27</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="px-4 py-3 text-center">
+            <button class="text-sm opacity-50 hover:opacity-80 transition">Show More</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../../../shared.js"></script>
+  <script>
+    initLayout({
+      actions: `
+        <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-lg inks-sage-500 hover transition">
+          <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+          Rerun Analysis
+        </button>
+      `
+    });
+  </script>
+</body>
+</html>

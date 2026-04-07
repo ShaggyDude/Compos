@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Builds — Cognatix</title>
+  <link rel="stylesheet" href="../styles/output.css">
+  <style>
+    .sidebar-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.375rem 0.5rem; border-radius: 0.5rem; font-size: 0.875rem; transition: background 160ms; text-decoration: none; color: inherit; }
+    .sidebar-link:hover { background: var(--ink-sage-100); }
+    .sidebar-link.active { background: var(--ink-sage-600); color: var(--ink-sage-0); }
+    .sidebar-link.active .lucide { opacity: 1; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="flex min-h-screen">
+    <div id="sidebar"></div>
+    <main class="flex-1 ml-56">
+      <div id="header"></div>
+
+      <!-- Build list -->
+      <div class="px-6 py-5">
+        <div class="raised rounded-lg overflow-hidden">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b text-xs opacity-50 uppercase tracking-wide">
+                <th class="text-left px-4 py-3 font-medium">Project</th>
+                <th class="text-left px-4 py-3 font-medium">Cycle</th>
+                <th class="text-left px-4 py-3 font-medium">Type</th>
+                <th class="text-left px-4 py-3 font-medium">Status</th>
+                <th class="text-left px-4 py-3 font-medium">Duration</th>
+                <th class="text-left px-4 py-3 font-medium">Cost</th>
+                <th class="text-left px-4 py-3 font-medium">Completed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b hover:bg-ink-sage-50/10 transition cursor-pointer" onclick="window.location='projects/clearwave/builds/7.html'">
+                <td class="px-4 py-3">
+                  <div class="font-medium">clearwave</div>
+                  <div class="text-xs opacity-40">clearwave</div>
+                </td>
+                <td class="px-4 py-3">7</td>
+                <td class="px-4 py-3">Full Analysis</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-ink-sage-500"></span> Completed</span></td>
+                <td class="px-4 py-3">3h 12m</td>
+                <td class="px-4 py-3">$0.00</td>
+                <td class="px-4 py-3">4/4/2026, 2:15 PM</td>
+              </tr>
+              <tr class="border-b hover:bg-ink-sage-50/10 transition cursor-pointer" onclick="window.location='projects/petra/builds/4.html'">
+                <td class="px-4 py-3">
+                  <div class="font-medium">petra</div>
+                  <div class="text-xs opacity-40">petra</div>
+                </td>
+                <td class="px-4 py-3">4</td>
+                <td class="px-4 py-3">Full Analysis</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-ink-sage-500"></span> Completed</span></td>
+                <td class="px-4 py-3">4h 30m 42s</td>
+                <td class="px-4 py-3">$0.00</td>
+                <td class="px-4 py-3">3/30/2026, 5:21 PM</td>
+              </tr>
+              <tr class="border-b hover:bg-ink-sage-50/10 transition cursor-pointer" onclick="window.location='projects/petra/builds/3.html'">
+                <td class="px-4 py-3">
+                  <div class="font-medium">petra</div>
+                  <div class="text-xs opacity-40">petra</div>
+                </td>
+                <td class="px-4 py-3">3</td>
+                <td class="px-4 py-3">Full Analysis</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-ink-red-500"></span> Failed</span></td>
+                <td class="px-4 py-3">2m 56s</td>
+                <td class="px-4 py-3">$0.00</td>
+                <td class="px-4 py-3">3/30/2026, 12:46 PM</td>
+              </tr>
+              <tr class="border-b hover:bg-ink-sage-50/10 transition cursor-pointer">
+                <td class="px-4 py-3">
+                  <div class="font-medium">clearwave</div>
+                  <div class="text-xs opacity-40">clearwave</div>
+                </td>
+                <td class="px-4 py-3">6</td>
+                <td class="px-4 py-3">Full Analysis</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-ink-sage-500"></span> Completed</span></td>
+                <td class="px-4 py-3">2h 58m</td>
+                <td class="px-4 py-3">$0.00</td>
+                <td class="px-4 py-3">3/28/2026, 3:08 PM</td>
+              </tr>
+              <tr class="border-b hover:bg-ink-sage-50/10 transition cursor-pointer">
+                <td class="px-4 py-3">
+                  <div class="font-medium">petra</div>
+                  <div class="text-xs opacity-40">petra</div>
+                </td>
+                <td class="px-4 py-3">2</td>
+                <td class="px-4 py-3">Full Analysis</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-ink-sage-500"></span> Completed</span></td>
+                <td class="px-4 py-3">4h 27m</td>
+                <td class="px-4 py-3">$0.00</td>
+                <td class="px-4 py-3">3/28/2026, 3:08 PM</td>
+              </tr>
+              <tr class="border-b hover:bg-ink-sage-50/10 transition cursor-pointer">
+                <td class="px-4 py-3">
+                  <div class="font-medium">petra</div>
+                  <div class="text-xs opacity-40">petra</div>
+                </td>
+                <td class="px-4 py-3">1</td>
+                <td class="px-4 py-3">Full Analysis</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-ink-sage-500"></span> Completed</span></td>
+                <td class="px-4 py-3">10m 38s</td>
+                <td class="px-4 py-3">$0.00</td>
+                <td class="px-4 py-3">3/27/2026, 5:05 PM</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../shared.js"></script>
+  <script>
+    initLayout({
+      title: 'Builds',
+      actions: '<button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-lg inks-gray-200 hover transition"><svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg> Refresh</button>'
+    });
+  </script>
+</body>
+</html>

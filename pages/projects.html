@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Cognatix</title>
+  <link rel="stylesheet" href="../styles/output.css">
+  <style>
+    .sidebar-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.375rem 0.5rem; border-radius: 0.5rem; font-size: 0.875rem; transition: background 160ms; text-decoration: none; color: inherit; }
+    .sidebar-link:hover { background: var(--ink-sage-100); }
+    .sidebar-link.active { background: var(--ink-sage-600); color: var(--ink-sage-0); }
+    .sidebar-link.active .lucide { opacity: 1; }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="flex min-h-screen">
+    <div id="sidebar"></div>
+    <main class="flex-1 ml-56">
+      <div id="header"></div>
+
+      <!-- Metrics bar -->
+      <div class="grid grid-cols-3 gap-4 px-6 py-5">
+        <div class="raised rounded-lg p-5">
+          <div class="text-xs opacity-50 uppercase tracking-wide">Total Projects</div>
+          <div class="text-2xl font-semibold mt-1">2</div>
+        </div>
+        <div class="raised rounded-lg p-5">
+          <div class="text-xs opacity-50 uppercase tracking-wide">Models Ready</div>
+          <div class="text-2xl font-semibold mt-1">2</div>
+        </div>
+        <div class="raised rounded-lg p-5">
+          <div class="text-xs opacity-50 uppercase tracking-wide">Total Files Analyzed</div>
+          <div class="text-2xl font-semibold mt-1">3.5K <span class="text-sm font-normal opacity-50">analyzed this week</span></div>
+        </div>
+      </div>
+
+      <!-- Project list header -->
+      <div class="flex items-center justify-between px-6 pb-3">
+        <div class="text-sm font-medium">Your Projects</div>
+        <div class="flex items-center gap-3 text-sm">
+          <span class="opacity-50">Filter</span>
+          <span class="opacity-50">Sort: <strong class="opacity-80">Name</strong></span>
+        </div>
+      </div>
+
+      <!-- Project cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-6 pb-8">
+
+        <!-- Petra -->
+        <div class="raised rounded-lg p-5 hover:brightness-105 transition cursor-pointer" onclick="window.location='projects/petra/overview.html'">
+          <div class="flex items-start justify-between">
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg inks-sage-500 text-sm font-bold">P</span>
+              <div>
+                <div class="font-semibold">petra</div>
+                <div class="text-xs opacity-40">petra</div>
+              </div>
+            </div>
+            <div class="relative">
+              <button onclick="event.stopPropagation(); toggleOverflow('overflow-petra')" class="p-1 rounded hover:bg-ink-sage-100/30 transition">
+                <svg class="lucide opacity-60" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+              </button>
+              <div id="overflow-petra" class="overflow-menu hidden absolute right-0 top-full mt-1 w-48 raised rounded-lg py-1 z-50">
+                <a href="projects/petra/overview.html" class="block px-3 py-1.5 text-sm hover:bg-ink-sage-100/20 transition no-underline">Analyze</a>
+                <a href="projects/petra/builds.html" class="block px-3 py-1.5 text-sm hover:bg-ink-sage-100/20 transition no-underline">View Logs</a>
+                <a href="projects/petra/settings.html" class="block px-3 py-1.5 text-sm hover:bg-ink-sage-100/20 transition no-underline">Project Settings</a>
+                <a href="#" class="block px-3 py-1.5 text-sm hover:bg-ink-sage-100/20 transition no-underline">Export Documentation</a>
+              </div>
+            </div>
+          </div>
+          <p class="text-sm opacity-60 mt-3 leading-relaxed">Open-source non-profit ERP for donations, accounting, and contact management.</p>
+          <div class="flex items-center gap-4 mt-4 text-xs opacity-40">
+            <span>1.4K Files</span>
+            <span>updated 7 days ago</span>
+          </div>
+          <div class="flex items-center justify-between mt-3">
+            <span class="inline-block px-2.5 py-0.5 text-xs font-medium rounded-full inks-sage-500">Model Ready</span>
+            <span class="text-xs opacity-40">Cycle 4</span>
+          </div>
+        </div>
+
+        <!-- Clearwave -->
+        <div class="raised rounded-lg p-5 hover:brightness-105 transition cursor-pointer" onclick="window.location='projects/clearwave/overview.html'">
+          <div class="flex items-start justify-between">
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg inks-sage-500 text-sm font-bold">C</span>
+              <div>
+                <div class="font-semibold">clearwave</div>
+                <div class="text-xs opacity-40">clearwave</div>
+              </div>
+            </div>
+            <div class="relative">
+              <button onclick="event.stopPropagation(); toggleOverflow('overflow-clearwave')" class="p-1 rounded hover:bg-ink-sage-100/30 transition">
+                <svg class="lucide opacity-60" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+              </button>
+              <div id="overflow-clearwave" class="overflow-menu hidden absolute right-0 top-full mt-1 w-48 raised rounded-lg py-1 z-50">
+                <a href="projects/clearwave/overview.html" class="block px-3 py-1.5 text-sm hover:bg-ink-sage-100/20 transition no-underline">Analyze</a>
+                <a href="projects/clearwave/builds.html" class="block px-3 py-1.5 text-sm hover:bg-ink-sage-100/20 transition no-underline">View Logs</a>
+                <a href="projects/clearwave/settings.html" class="block px-3 py-1.5 text-sm hover:bg-ink-sage-100/20 transition no-underline">Project Settings</a>
+                <a href="#" class="block px-3 py-1.5 text-sm hover:bg-ink-sage-100/20 transition no-underline">Export Documentation</a>
+              </div>
+            </div>
+          </div>
+          <p class="text-sm opacity-60 mt-3 leading-relaxed">Insurance eligibility, patient registration, EDI transactions, HIPAA audit trails.</p>
+          <div class="flex items-center gap-4 mt-4 text-xs opacity-40">
+            <span>2.1K Files</span>
+            <span>updated 3 days ago</span>
+          </div>
+          <div class="flex items-center justify-between mt-3">
+            <span class="inline-block px-2.5 py-0.5 text-xs font-medium rounded-full inks-sage-500">Model Ready</span>
+            <span class="text-xs opacity-40">Cycle 7</span>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../shared.js"></script>
+  <script>
+    initLayout({
+      title: 'Projects',
+      actions: '<a href="#" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-lg inks-sage-500 hover transition no-underline"><svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg> Add Project</a>'
+    });
+  </script>
+</body>
+</html>

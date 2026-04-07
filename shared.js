@@ -1,0 +1,271 @@
+// Shared layout components for Cognatix V1.2 prototype
+// Hardcoded projects
+const PROJECTS = [
+  { name: 'petra', label: 'Petra', slug: 'petra', desc: 'Open-source non-profit ERP for donations, accounting, and contact management.', files: '1.4K', loc: '581.9K', functions: 20, cycle: 4, status: 'Ready', lastBuild: 'Mon Mar 30 2026' },
+  { name: 'clearwave', label: 'Clearwave', slug: 'clearwave', desc: 'Insurance eligibility, patient registration, EDI transactions, HIPAA audit trails.', files: '2.1K', loc: '340.2K', functions: 34, cycle: 7, status: 'Ready', lastBuild: 'Fri Apr 04 2026' }
+];
+
+// Detect current context from URL
+function getContext() {
+  const path = window.location.pathname;
+  // Find which project we're in, if any
+  for (const p of PROJECTS) {
+    if (path.includes(`/projects/${p.slug}`)) {
+      return { scope: 'project', project: p, path };
+    }
+  }
+  return { scope: 'global', project: null, path };
+}
+
+// Get base path (how many levels deep are we?)
+function getBasePath() {
+  const path = window.location.pathname;
+  const depth = (path.match(/\//g) || []).length;
+  // We need to figure out relative path to root
+  // Since we use file:// protocol, calculate relative to /pages/
+  const parts = path.split('/');
+  const pagesIdx = parts.indexOf('pages');
+  if (pagesIdx === -1) return './pages/';
+  const levelsDeep = parts.length - pagesIdx - 2; // -2 for pages/ and filename
+  if (levelsDeep <= 0) return './';
+  return '../'.repeat(levelsDeep);
+}
+
+function getRoot() {
+  const path = window.location.pathname;
+  const parts = path.split('/');
+  const pagesIdx = parts.indexOf('pages');
+  if (pagesIdx === -1) return './pages/';
+  const afterPages = parts.slice(pagesIdx + 1);
+  // count directories (not the file itself)
+  const dirs = afterPages.length - 1;
+  if (dirs <= 0) return './';
+  return '../'.repeat(dirs);
+}
+
+// Render sidebar
+function renderSidebar(ctx) {
+  const root = getRoot();
+  const isGlobal = ctx.scope === 'global';
+  const path = window.location.pathname;
+
+  const isActive = (href) => {
+    const hrefFile = href.split('/').pop();
+    const pathFile = path.split('/').pop();
+    return hrefFile === pathFile;
+  };
+
+  let navItems = '';
+  if (isGlobal) {
+    navItems = `
+      <a href="${root}projects.html" class="sidebar-link ${isActive(root + 'projects.html') ? 'active' : ''}">
+        <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
+        Projects
+      </a>
+      <a href="${root}builds.html" class="sidebar-link ${isActive(root + 'builds.html') ? 'active' : ''}">
+        <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        Builds
+      </a>
+    `;
+  } else {
+    const p = ctx.project;
+    navItems = `
+      <a href="${root}projects/${p.slug}/overview.html" class="sidebar-link ${isActive('overview.html') ? 'active' : ''}">
+        <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+        Overview
+      </a>
+      <a href="${root}projects/${p.slug}/builds.html" class="sidebar-link ${isActive('builds.html') ? 'active' : ''}">
+        <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        Builds
+      </a>
+      <a href="${root}projects/${p.slug}/analysis.html" class="sidebar-link ${isActive('analysis.html') ? 'active' : ''}">
+        <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+        Browse Analysis
+      </a>
+      <a href="${root}projects/${p.slug}/settings.html" class="sidebar-link ${isActive('settings.html') ? 'active' : ''}">
+        <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+        Project Settings
+      </a>
+    `;
+  }
+
+  return `
+    <aside class="sidebar flex flex-col h-screen w-56 shrink-0 border-r fixed left-0 top-0 z-30">
+      <!-- Logo -->
+      <div class="p-4 pb-2">
+        <a href="${root}projects.html" class="flex items-center gap-2 font-semibold text-lg no-underline">
+          <svg class="text-ink-sage-500" width="24" height="24" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm-2 22c-4.418 0-8-3.582-8-8s3.582-8 8-8c1.848 0 3.55.627 4.906 1.681L14 16l4.906 6.319A7.962 7.962 0 0 1 14 24z"/></svg>
+          <span class="text-ink-sage-1000">Cognatix</span>
+        </a>
+      </div>
+
+      <!-- Nav -->
+      <nav class="flex-1 flex flex-col gap-0.5 px-2 pt-2">
+        ${navItems}
+      </nav>
+
+      <!-- Bottom section -->
+      <div class="border-t px-2 py-2">
+        <a href="${root}settings.html" class="sidebar-link ${isActive('settings.html') && ctx.scope === 'global' ? 'active' : ''}">
+          <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+          Account Settings
+        </a>
+      </div>
+
+      <!-- Avatar -->
+      <div class="border-t px-2 py-3">
+        <button onclick="toggleAvatarMenu()" class="avatar-btn flex items-center gap-2 w-full px-2 py-1.5 rounded-lg text-sm hover:bg-ink-sage-100/20 transition">
+          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full inks-sage-500 text-xs font-medium">S</span>
+          <span class="flex flex-col items-start leading-tight">
+            <span class="text-sm font-medium">Scott</span>
+            <span class="text-xs opacity-50">Cognatix</span>
+          </span>
+        </button>
+        <div id="avatar-menu" class="hidden absolute bottom-16 left-2 w-48 raised rounded-lg py-1 z-50">
+          <div class="px-3 py-2 border-b">
+            <div class="text-sm font-medium">Scott</div>
+            <div class="text-xs opacity-50">scott@sage-tech.ai</div>
+          </div>
+          <a href="#" class="block px-3 py-1.5 text-sm hover:bg-ink-sage-100/20 transition">Profile</a>
+          <a href="#" class="block px-3 py-1.5 text-sm hover:bg-ink-sage-100/20 transition">Preferences</a>
+          <a href="#" class="block px-3 py-1.5 text-sm hover:bg-ink-sage-100/20 transition">API Keys</a>
+          <div class="border-t mt-1 pt-1">
+            <a href="#" class="block px-3 py-1.5 text-sm hover:bg-ink-sage-100/20 transition">Sign Out</a>
+          </div>
+        </div>
+      </div>
+    </aside>
+  `;
+}
+
+// Render header
+function renderHeader(ctx, opts = {}) {
+  const root = getRoot();
+  const { title, breadcrumb, breadcrumbLink, actions } = opts;
+
+  let projectSwitcher = '';
+  if (ctx.scope === 'project') {
+    projectSwitcher = `
+      <div class="relative">
+        <button onclick="toggleProjectSwitcher()" class="flex items-center gap-2 text-lg font-semibold hover:opacity-80 transition">
+          ${ctx.project.label}
+          <svg class="lucide opacity-40" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
+          <a href="${root}projects.html" onclick="event.stopPropagation()" class="p-1 rounded hover:bg-ink-sage-100/30 transition no-underline opacity-50 hover:opacity-100" title="Back to all projects">
+            <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </a>
+        </button>
+        <div id="project-switcher" class="hidden absolute top-full left-0 mt-2 w-72 raised rounded-lg py-1 z-50">
+          <div class="flex items-center gap-2 px-3 py-2">
+            <input type="text" placeholder="Find Project..." class="flex-1 px-2 py-1.5 text-sm rounded-md bg-ink-gray-100/50 border border-ink-gray-200/30 outline-none">
+            <button onclick="toggleProjectSwitcher()" class="p-1 rounded hover:bg-ink-sage-100/30 transition text-xs opacity-50 border border-ink-gray-300/30 px-1.5 py-0.5">Esc</button>
+          </div>
+          ${PROJECTS.map(p => `
+            <a href="${root}projects/${p.slug}/overview.html" class="flex items-center justify-between px-3 py-2 text-sm hover:bg-ink-sage-100/20 transition no-underline">
+              <span class="font-medium">${p.label}</span>
+              ${p.slug === ctx.project?.slug ? '<svg class="lucide text-ink-sage-500" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>' : ''}
+            </a>
+          `).join('')}
+          <div class="border-t mt-1 pt-1">
+            <a href="#" class="flex items-center gap-2 px-3 py-2 text-sm text-ink-sage-500 hover:bg-ink-sage-100/20 transition no-underline">
+              <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              Create Project
+            </a>
+          </div>
+        </div>
+      </div>
+    `;
+  } else {
+    projectSwitcher = `<h1 class="text-lg font-semibold">${title || 'Projects'}</h1>`;
+  }
+
+  let breadcrumbHtml = '';
+  if (breadcrumb) {
+    const parts = breadcrumb.split(' / ');
+    let crumbs = '';
+    if (parts.length > 1 && breadcrumbLink) {
+      crumbs = `<a href="${breadcrumbLink}" class="opacity-60 hover:opacity-100 no-underline transition">${parts[0]}</a><span class="opacity-30 mx-2">/</span><span class="opacity-60">${parts.slice(1).join(' / ')}</span>`;
+    } else if (breadcrumbLink) {
+      crumbs = `<a href="${breadcrumbLink}" class="opacity-60 hover:opacity-100 no-underline transition">${breadcrumb}</a>`;
+    } else {
+      crumbs = `<span class="opacity-60">${breadcrumb}</span>`;
+    }
+    breadcrumbHtml = `<span class="opacity-30 ml-3 mr-2">/</span>${crumbs}`;
+  }
+
+  return `
+    <header class="flex items-center justify-between px-6 py-4 border-b">
+      <div class="flex items-center gap-2">
+        ${projectSwitcher}
+        ${breadcrumbHtml}
+      </div>
+      <div class="flex items-center gap-2">
+        ${actions || ''}
+      </div>
+    </header>
+  `;
+}
+
+// Toggle functions
+function toggleProjectSwitcher() {
+  const el = document.getElementById('project-switcher');
+  el?.classList.toggle('hidden');
+  // Close avatar menu if open
+  document.getElementById('avatar-menu')?.classList.add('hidden');
+}
+
+function toggleAvatarMenu() {
+  const el = document.getElementById('avatar-menu');
+  el?.classList.toggle('hidden');
+  // Close project switcher if open
+  document.getElementById('project-switcher')?.classList.add('hidden');
+}
+
+function toggleOverflow(id) {
+  const el = document.getElementById(id);
+  el?.classList.toggle('hidden');
+  // Close any other overflow menus
+  document.querySelectorAll('.overflow-menu').forEach(m => {
+    if (m.id !== id) m.classList.add('hidden');
+  });
+}
+
+function toggleCollapse(id) {
+  const el = document.getElementById(id);
+  const icon = document.getElementById(id + '-icon');
+  el?.classList.toggle('hidden');
+  if (icon) {
+    icon.style.transform = el?.classList.contains('hidden') ? '' : 'rotate(90deg)';
+  }
+}
+
+// Close dropdowns on outside click
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.avatar-btn') && !e.target.closest('#avatar-menu')) {
+    document.getElementById('avatar-menu')?.classList.add('hidden');
+  }
+  if (!e.target.closest('[onclick*="toggleProjectSwitcher"]') && !e.target.closest('#project-switcher')) {
+    document.getElementById('project-switcher')?.classList.add('hidden');
+  }
+  if (!e.target.closest('[onclick*="toggleOverflow"]') && !e.target.closest('.overflow-menu')) {
+    document.querySelectorAll('.overflow-menu').forEach(m => m.classList.add('hidden'));
+  }
+});
+
+// Close dropdowns on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.getElementById('project-switcher')?.classList.add('hidden');
+    document.getElementById('avatar-menu')?.classList.add('hidden');
+    document.querySelectorAll('.overflow-menu').forEach(m => m.classList.add('hidden'));
+  }
+});
+
+// Initialize layout
+function initLayout(opts = {}) {
+  const ctx = getContext();
+  const sidebar = document.getElementById('sidebar');
+  const header = document.getElementById('header');
+
+  if (sidebar) sidebar.innerHTML = renderSidebar(ctx);
+  if (header) header.innerHTML = renderHeader(ctx, opts);
+}
