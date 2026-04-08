@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>clearwave — Overview — Cognatix</title>
-  <link rel="icon" type="image/svg+xml" href="../../../images/favicon.svg">
-    <link rel="stylesheet" href="../../../styles/output.css">
+  <title>petra — Overview — Cognatix</title>
+  <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
+    <link rel="stylesheet" href="../../styles/output.css">
 </head>
 <body class="antialiased">
   <div class="flex min-h-screen">
@@ -17,24 +17,26 @@
       <div class="grid grid-cols-4 gap-4 px-6 py-5">
         <div class="raised rounded p-5">
           <div class="text-xs opacity-50 uppercase tracking-wide">Total Files</div>
-          <div class="text-2xl font-semibold mt-1">2.1K</div>
+          <div class="text-2xl font-semibold mt-1">1.4K</div>
         </div>
         <div class="raised rounded p-5">
           <div class="text-xs opacity-50 uppercase tracking-wide">Lines of Code</div>
-          <div class="text-2xl font-semibold mt-1">340.2K</div>
+          <div class="text-2xl font-semibold mt-1">581.9K</div>
         </div>
         <div class="raised rounded p-5">
           <div class="text-xs opacity-50 uppercase tracking-wide">Business Functions</div>
-          <div class="text-2xl font-semibold mt-1">34</div>
+          <div class="text-2xl font-semibold mt-1">20</div>
         </div>
         <div class="raised rounded p-5">
           <div class="text-xs opacity-50 uppercase tracking-wide">Current Cycle</div>
-          <div class="text-2xl font-semibold mt-1">7</div>
+          <div class="text-2xl font-semibold mt-1">4</div>
         </div>
       </div>
 
       <!-- Latest build + Checklist -->
       <div class="grid grid-cols-2 gap-4 px-6 pb-5">
+
+        <!-- Latest Build -->
         <div class="raised rounded p-5">
           <h3 class="text-sm font-semibold mb-4">Latest Build</h3>
           <div class="space-y-3">
@@ -44,30 +46,31 @@
             </div>
             <div class="flex items-center justify-between text-sm">
               <span class="opacity-50">Cycle</span>
-              <span>7</span>
+              <span>4</span>
             </div>
             <div class="flex items-center justify-between text-sm">
               <span class="opacity-50">Completed</span>
-              <span>3 days ago</span>
+              <span>2h ago</span>
             </div>
             <div class="flex items-center justify-between text-sm">
               <span class="opacity-50">Duration</span>
-              <span>3h 12m</span>
+              <span>4m 12s</span>
             </div>
             <div class="flex items-center justify-between text-sm">
               <span class="opacity-50">Files</span>
-              <span>2,134</span>
+              <span>247</span>
             </div>
           </div>
           <div class="mt-4">
-            <a href="builds/7.html" class="text-sm text-ink-sage-500 hover:underline no-underline">View Detail →</a>
+            <a href="builds/4.html" class="text-sm text-ink-sage-500 hover:underline no-underline">View Detail →</a>
           </div>
         </div>
 
+        <!-- Project Readiness Checklist -->
         <div class="raised rounded p-5">
           <div class="flex items-center justify-between mb-4">
             <h3 class="text-sm font-semibold">Project Readiness</h3>
-            <span class="text-xs opacity-50">4/4</span>
+            <span class="text-xs opacity-50">3/4</span>
           </div>
           <div class="space-y-3">
             <label class="flex items-center gap-3 text-sm">
@@ -82,12 +85,13 @@
               <span class="inline-flex items-center justify-center w-5 h-5 rounded inks-sage-500 text-xs">✓</span>
               <span>First analysis completed</span>
             </label>
-            <label class="flex items-center gap-3 text-sm">
-              <span class="inline-flex items-center justify-center w-5 h-5 rounded inks-sage-500 text-xs">✓</span>
-              <span>Analysis instructions added</span>
+            <label class="flex items-center gap-3 text-sm cursor-pointer group">
+              <span class="inline-flex items-center justify-center w-5 h-5 rounded border border-ink-gray-400/40 text-xs"></span>
+              <a href="settings.html" class="text-ink-sage-500 hover:underline no-underline group-hover:underline">Add analysis instructions</a>
             </label>
           </div>
         </div>
+
       </div>
 
       <!-- Recent Builds -->
@@ -106,23 +110,29 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="border-b hover:bg-ink-sage-50/10 transition cursor-pointer" onclick="window.location='builds/7.html'">
-                <td class="px-4 py-2.5">7</td>
+              <tr class="border-b hover:bg-ink-sage-50/10 transition cursor-pointer" onclick="window.location='builds/4.html'">
+                <td class="px-4 py-2.5">4</td>
                 <td class="px-4 py-2.5"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded bg-ink-sage-500"></span> Ready</span></td>
-                <td class="px-4 py-2.5">3h 12m</td>
-                <td class="px-4 py-2.5">Apr 04</td>
+                <td class="px-4 py-2.5">4m 12s</td>
+                <td class="px-4 py-2.5">Mar 31</td>
               </tr>
               <tr class="border-b hover:bg-ink-sage-50/10 transition cursor-pointer">
-                <td class="px-4 py-2.5">6</td>
+                <td class="px-4 py-2.5">3</td>
+                <td class="px-4 py-2.5"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded bg-ink-red-500"></span> Error</span></td>
+                <td class="px-4 py-2.5">2m 56s</td>
+                <td class="px-4 py-2.5">Mar 30</td>
+              </tr>
+              <tr class="border-b hover:bg-ink-sage-50/10 transition cursor-pointer">
+                <td class="px-4 py-2.5">2</td>
                 <td class="px-4 py-2.5"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded bg-ink-sage-500"></span> Ready</span></td>
-                <td class="px-4 py-2.5">2h 58m</td>
+                <td class="px-4 py-2.5">4h 27m</td>
                 <td class="px-4 py-2.5">Mar 28</td>
               </tr>
               <tr class="border-b hover:bg-ink-sage-50/10 transition cursor-pointer">
-                <td class="px-4 py-2.5">5</td>
+                <td class="px-4 py-2.5">1</td>
                 <td class="px-4 py-2.5"><span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded bg-ink-sage-500"></span> Ready</span></td>
-                <td class="px-4 py-2.5">3h 05m</td>
-                <td class="px-4 py-2.5">Mar 25</td>
+                <td class="px-4 py-2.5">10m 38s</td>
+                <td class="px-4 py-2.5">Mar 27</td>
               </tr>
             </tbody>
           </table>
@@ -134,7 +144,7 @@
     </main>
   </div>
 
-  <script src="../../../shared.js"></script>
+  <script src="../../shared.js"></script>
   <script>
     initLayout({
       actions: `

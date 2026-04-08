@@ -307,7 +307,7 @@
   .lucide {
     width: unset;
     height: unset;
-    @apply inline size-4 h-auto stroke-[1.5] opacity-50;
+    @apply inline size-4 h-auto stroke-2 opacity-60;
   }
 
   dialog {

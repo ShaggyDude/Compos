@@ -27,30 +27,13 @@ function getContext() {
   return { scope: 'global', project: null, page: null, path };
 }
 
-// Get base path (how many levels deep are we?)
-function getBasePath() {
-  const path = window.location.pathname;
-  const depth = (path.match(/\//g) || []).length;
-  // We need to figure out relative path to root
-  // Since we use file:// protocol, calculate relative to /pages/
-  const parts = path.split('/');
-  const pagesIdx = parts.indexOf('pages');
-  if (pagesIdx === -1) return './pages/';
-  const levelsDeep = parts.length - pagesIdx - 2; // -2 for pages/ and filename
-  if (levelsDeep <= 0) return './';
-  return '../'.repeat(levelsDeep);
-}
-
 function getRoot() {
-  const path = window.location.pathname;
-  const parts = path.split('/');
-  const pagesIdx = parts.indexOf('pages');
-  if (pagesIdx === -1) return './pages/';
-  const afterPages = parts.slice(pagesIdx + 1);
-  // count directories (not the file itself)
-  const dirs = afterPages.length - 1;
-  if (dirs <= 0) return './';
-  return '../'.repeat(dirs);
+  const parts = window.location.pathname.split('/');
+  // Anchor on 'projects' as a directory (not 'projects.html')
+  const idx = parts.findIndex((p, i) => p === 'projects' && i < parts.length - 1);
+  if (idx === -1) return './'; // root-level page
+  const depth = parts.slice(idx).length - 1; // exclude filename
+  return '../'.repeat(depth);
 }
 
 // Render sidebar
@@ -89,8 +72,8 @@ function renderSidebar(ctx) {
         Builds
       </a>
       <a href="${root}projects/${p.slug}/analysis.html" class="sidebar-link ${isActive('analysis.html') ? 'active' : ''}">
-        <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
-        Browse Analysis
+        <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/><path d="M7 8h10"/><path d="M7 16h10"/></svg>
+        Analysis
       </a>
       <a href="${root}projects/${p.slug}/settings.html" class="sidebar-link ${isActive('settings.html') ? 'active' : ''}">
         <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
@@ -104,7 +87,7 @@ function renderSidebar(ctx) {
       <!-- Logo -->
       <div class="px-6 py-8">
         <a href="${root}projects.html" class="flex items-center gap-2 text-lg no-underline">
-          <img src="${root}../images/favicon.svg" alt="Cognatix" width="18" height="30">
+          <img src="${root}images/favicon.svg" alt="Cognatix" width="18" height="30">
           <span class="text-ink-sage-1000">Cognatix</span>
         </a>
       </div>
@@ -137,8 +120,6 @@ function renderSidebar(ctx) {
             <div class="text-xs opacity-50">scott@sage-tech.ai</div>
           </div>
           <a href="#" class="block px-3 py-1.5 text-sm hover:bg-ink-sage-100/20 transition">Profile</a>
-          <a href="#" class="block px-3 py-1.5 text-sm hover:bg-ink-sage-100/20 transition">Preferences</a>
-          <a href="#" class="block px-3 py-1.5 text-sm hover:bg-ink-sage-100/20 transition">API Keys</a>
           <div class="border-t mt-1 pt-1">
             <a href="#" class="block px-3 py-1.5 text-sm hover:bg-ink-sage-100/20 transition">Sign Out</a>
           </div>
