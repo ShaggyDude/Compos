@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: Alliance;
+  src: url('../fonts/alliance.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Alliance;
+  src: url('../fonts/alliance-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
 /* === INKset: ========== auto darkmode for Tailwind ===>
   Ink  = pigment (single resolved color)
   Inkset = bg + fg pairing
@@ -302,6 +316,7 @@
 
   body {
     @apply antialiased;
+    font-family: Alliance, sans-serif;
   }
 
   .lucide {
