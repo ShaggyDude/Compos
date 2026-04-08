@@ -594,18 +594,19 @@
   }
 }
 
-/* === Sidebar nav links === */
+/* === AI SLOP should be utility classes === */
 .sidebar-link {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.375rem 0.5rem;
+  padding: .5rem;
   border-radius: 0.5rem;
   font-size: 0.875rem;
   transition: background 160ms;
-  text-decoration: none;
-  color: inherit;
+  border: 1px solid transparent
+  /* text-decoration: none;
+  color: inherit; */
 }
-.sidebar-link:hover { background: var(--ink-sage-100); }
-.sidebar-link.active { background: var(--ink-sage-100); }
-.sidebar-link.active .lucide { opacity: 1; }
+.sidebar-link:hover {
+  background: #5553;
+ }
