@@ -1,9 +1,15 @@
 // Shared layout components for Cognatix V1.2 prototype
 // Hardcoded projects
 const PROJECTS = [
-  { name: 'petra', label: 'Petra', slug: 'petra', desc: 'Open-source non-profit ERP for donations, accounting, and contact management.', files: '1.4K', loc: '581.9K', functions: 20, cycle: 4, status: 'Ready', lastBuild: 'Mon Mar 30 2026' },
-  { name: 'clearwave', label: 'Clearwave', slug: 'clearwave', desc: 'Insurance eligibility, patient registration, EDI transactions, HIPAA audit trails.', files: '2.1K', loc: '340.2K', functions: 34, cycle: 7, status: 'Ready', lastBuild: 'Fri Apr 04 2026' }
+  { name: 'petra', label: 'Petra', slug: 'petra', desc: 'Open-source non-profit ERP for donations, accounting, and contact management.', files: '1.4K', loc: '581.9K', functions: 20, cycle: 4, status: 'Ready', lastBuild: 'Mon Mar 30 2026', icon: '<path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/>' },
+  { name: 'clearwave', label: 'Clearwave', slug: 'clearwave', desc: 'Insurance eligibility, patient registration, EDI transactions, HIPAA audit trails.', files: '2.1K', loc: '340.2K', functions: 34, cycle: 7, status: 'Ready', lastBuild: 'Fri Apr 04 2026', icon: '<path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/>' }
 ];
+
+function projectIcon(p) {
+  return `<span class="inline-flex items-center justify-center size-7 rounded-md inks-sage-500 shrink-0">
+    <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${p.icon}</svg>
+  </span>`;
+}
 
 // Detect current sub-page within a project
 function getCurrentPage(path) {
@@ -63,20 +69,20 @@ function renderSidebar(ctx) {
   } else {
     const p = ctx.project;
     navItems = `
-      <a href="${root}projects/${p.slug}/overview.html" class="sidebar-link ${isActive('overview.html') ? 'active' : ''}">
+      <a href="${root}projects/${p.slug}/overview.html" class="sidebar-link ${ctx.page === 'overview' ? 'active' : ''}">
         <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
         Overview
       </a>
-      <a href="${root}projects/${p.slug}/builds.html" class="sidebar-link ${isActive('builds.html') ? 'active' : ''}">
+      <a href="${root}projects/${p.slug}/builds.html" class="sidebar-link ${ctx.page === 'builds' ? 'active' : ''}">
         <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
         Builds
       </a>
       <hr class="my-6 border-t" />
-      <a href="${root}projects/${p.slug}/analysis.html" class="sidebar-link ${isActive('analysis.html') ? 'active' : ''}">
+      <a href="${root}projects/${p.slug}/analysis.html" class="sidebar-link ${ctx.page === 'analysis' ? 'active' : ''}">
         <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/><path d="M7 8h10"/><path d="M7 16h10"/></svg>
         Analysis
       </a>
-      <a href="${root}projects/${p.slug}/settings.html" class="sidebar-link ${isActive('settings.html') ? 'active' : ''}">
+      <a href="${root}projects/${p.slug}/settings.html" class="sidebar-link ${ctx.page === 'settings' ? 'active' : ''}">
         <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
         Project Settings
       </a>
@@ -140,6 +146,7 @@ function renderHeader(ctx, opts = {}) {
     projectSwitcher = `
       <div class="relative">
         <button onclick="toggleProjectSwitcher()" class="flex items-center gap-2 text-lg hover:opacity-80 transition">
+          ${projectIcon(ctx.project)}
           ${ctx.project.label}
           <svg class="lucide opacity-40" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
           <a href="${root}projects.html" onclick="event.stopPropagation()" class="p-1 rounded hover:bg-ink-sage-100/30 transition no-underline opacity-50 hover:opacity-100" title="Back to all projects">
@@ -153,7 +160,7 @@ function renderHeader(ctx, opts = {}) {
           </div>
           ${PROJECTS.map(p => `
             <a href="${root}projects/${p.slug}/${ctx.page || 'overview'}.html" class="flex items-center justify-between px-3 py-2 text-sm hover:bg-ink-sage-100/20 transition no-underline">
-              <span class="font-medium">${p.label}</span>
+              <span class="flex items-center gap-2">${projectIcon(p)}<span class="font-medium">${p.label}</span></span>
               ${p.slug === ctx.project?.slug ? '<svg class="lucide text-ink-sage-500" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>' : ''}
             </a>
           `).join('')}
@@ -181,15 +188,15 @@ function renderHeader(ctx, opts = {}) {
     } else {
       crumbs = `<span class="opacity-60">${breadcrumb}</span>`;
     }
-    breadcrumbHtml = `<span class="opacity-30 ml-3 mr-2">/</span>${crumbs}`;
+    breadcrumbHtml = crumbs;
   }
 
   return `
-    <header class="flex items-center justify-between px-12 py-8 border-b">
+    <header class="relative flex items-center justify-between px-12 py-8 border-b">
       <div class="flex items-center gap-2">
         ${projectSwitcher}
-        ${breadcrumbHtml}
       </div>
+      ${breadcrumbHtml ? `<div class="absolute left-1/2 -translate-x-1/2 flex items-center gap-1 text-sm opacity-60">${breadcrumbHtml}</div>` : ''}
       <div class="flex items-center gap-2">
         ${actions || ''}
       </div>
