@@ -136,7 +136,7 @@
     --color-ink-gray-200: var(--ink-gray-200);
     --color-ink-gray-300: var(--ink-gray-300);
     --color-ink-gray-400: var(--ink-gray-400);
-    --color-border: light-dark(var(--base-gray-500), var(--base-gray-800));
+    --color-border: light-dark(var(--base-gray-600), var(--base-gray-800));
   }
 }
 @layer base {
@@ -288,6 +288,9 @@
   }
 }
 @layer utilities {
+  .pointer-events-none {
+    pointer-events: none;
+  }
   .absolute {
     position: absolute;
   }
@@ -299,6 +302,9 @@
   }
   .static {
     position: static;
+  }
+  .inset-0 {
+    inset: calc(var(--spacing) * 0);
   }
   .start {
     inset-inline-start: var(--spacing);
@@ -326,6 +332,9 @@
   }
   .left-2 {
     left: calc(var(--spacing) * 2);
+  }
+  .z-10 {
+    z-index: 10;
   }
   .z-30 {
     z-index: 30;
@@ -383,9 +392,6 @@
   }
   .hidden {
     display: none;
-  }
-  .inline-block {
-    display: inline-block;
   }
   .inline-flex {
     display: inline-flex;
@@ -644,9 +650,6 @@
   }
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
-  }
-  .px-2\.5 {
-    padding-inline: calc(var(--spacing) * 2.5);
   }
   .px-3 {
     padding-inline: calc(var(--spacing) * 3);
@@ -1254,7 +1257,7 @@
     position: relative;
     border-style: var(--tw-border-style);
     border-width: 1px;
-    border-color: color-mix(in srgb, light-dark(var(--base-gray-500), var(--base-gray-800)) 20%, transparent);
+    border-color: color-mix(in srgb, light-dark(var(--base-gray-600), var(--base-gray-800)) 20%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       border-color: color-mix(in oklab, var(--color-border) 20%, transparent);
     }
@@ -1265,7 +1268,7 @@
     backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
     --bg: var(--inks-gray-100-bg);
     --fg: var(--inks-gray-100-fg);
-    background: light-dark(oklch(from var(--bg) l c h / 0.98), oklch(from var(--bg) l c h / 0.28));
+    background: light-dark(oklch(from var(--bg) l c h / 0.02), oklch(from var(--bg) l c h / 0.06));
     color: var(--fg);
   }
   .raised::after {
@@ -1280,18 +1283,14 @@
     background-image: linear-gradient(var(--tw-gradient-stops));
     --tw-gradient-from: transparent;
     --tw-gradient-from-position: 30%;
-    --tw-gradient-to: color-mix(in oklab, var(--color-ink-gray-0) 8%, transparent);
+    --tw-gradient-to: color-mix(in oklab, var(--color-ink-gray-0) 2%, transparent);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
     content: " ";
-  }
-  .raised .raised {
-    background: var(--ink-gray-0);
-    color: var(--ink-gray-1000);
   }
 }
 @layer utilities {
   .border, .border-t, .border-r, .border-b, .border-l {
-    border-color: color-mix(in srgb, light-dark(var(--base-gray-500), var(--base-gray-800)) 30%, transparent);
+    border-color: color-mix(in srgb, light-dark(var(--base-gray-600), var(--base-gray-800)) 30%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       border-color: color-mix(in oklab, var(--color-border) 30%, transparent);
     }
@@ -1358,6 +1357,7 @@
   position: fixed;
   inset: 0;
   pointer-events: none;
+  z-index: -1;
 }
 @property --tw-translate-x {
   syntax: "*";

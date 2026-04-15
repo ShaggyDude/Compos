@@ -90,7 +90,7 @@ function renderSidebar(ctx) {
   }
 
   return `
-    <aside class="sidebar flex flex-col h-screen w-56 shrink-0 border-r fixed left-0 top-0 z-30">
+    <aside class="sidebar raised flex flex-col h-screen w-56 shrink-0 border-r fixed left-0 top-0 z-30">
       <!-- Logo -->
       <div class="px-6 py-8">
         <a href="${root}projects.html" class="group flex items-center gap-1.5 no-underline">
@@ -194,12 +194,13 @@ function renderHeader(ctx, opts = {}) {
   }
 
   return `
-    <header class="relative flex items-center justify-between px-12 py-8 border-b">
+    <header class="relative flex items-center justify-between px-12 py-8">
+      <div class="raised absolute inset-0 pointer-events-none"></div>
       <div class="flex items-center gap-2">
         ${projectSwitcher}
       </div>
       ${breadcrumbHtml ? `<div class="absolute left-1/2 -translate-x-1/2 flex items-center gap-1 text-sm opacity-60">${breadcrumbHtml}</div>` : ''}
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2 z-10">
         ${actions || ''}
       </div>
     </header>

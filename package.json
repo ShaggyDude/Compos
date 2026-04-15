@@ -5,7 +5,8 @@
   "main": "shared.js",
   "scripts": {
     "build": "npx @tailwindcss/cli -i styles/main.css -o styles/output.css --content 'pages/**/*.html,shared.js'",
-    "watch": "npx @tailwindcss/cli -i styles/main.css -o styles/output.css --content 'pages/**/*.html,shared.js' --watch"
+    "watch": "npx @tailwindcss/cli -i styles/main.css -o styles/output.css --content 'pages/**/*.html,shared.js' --watch",
+    "dev": "npx serve . -p 3000"
   },
   "repository": {
     "type": "git",

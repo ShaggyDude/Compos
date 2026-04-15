@@ -179,7 +179,7 @@
   --color-ink-gray-1000: var(--ink-gray-1000);
 
   /* SEMANTIC */
-  --color-border: light-dark(var(--base-gray-500), var(--base-gray-800));
+  --color-border: light-dark(var(--base-gray-600), var(--base-gray-800));
 }
 
 @property --bg {
@@ -533,17 +533,17 @@
     @apply border-border/20 relative border shadow-xs backdrop-blur-lg;
     --bg: var(--inks-gray-100-bg);
     --fg: var(--inks-gray-100-fg);
-    background: light-dark(oklch(from var(--bg) l c h / 0.98), oklch(from var(--bg) l c h / 0.28));
+    background: light-dark(oklch(from var(--bg) l c h / 0.02), oklch(from var(--bg) l c h / 0.06));
     color: var(--fg);
   }
   .raised::after {
-    @apply to-ink-gray-0/8 pointer-events-none absolute inset-0 rounded-[inherit] bg-linear-to-b from-transparent from-30%;
+    @apply to-ink-gray-0/2 pointer-events-none absolute inset-0 rounded-[inherit] bg-linear-to-b from-transparent from-30%;
     content: " ";
   }
-  .raised .raised {
+  /* .raised .raised {
    background: var(--ink-gray-0);
    color: var(--ink-gray-1000);
-  }
+  } */
 
 }
 
@@ -615,4 +615,5 @@
   position: fixed;
   inset: 0;
   pointer-events: none;
+  z-index: -1;
 }
