@@ -93,9 +93,9 @@ function renderSidebar(ctx) {
     <aside class="sidebar flex flex-col h-screen w-56 shrink-0 border-r fixed left-0 top-0 z-30">
       <!-- Logo -->
       <div class="px-6 py-8">
-        <a href="${root}projects.html" class="group flex items-center gap-1 text-lg no-underline">
-          <img src="${root}images/favicon.svg" alt="Cognatix" class="size-5 saturate-0 opacity-60 transition group-hover:saturate-100 group-hover:opacity-100">
-          <span class="text-ink-sage-1000 opacity-60 transition group-hover:opacity-100">Cognatix</span>
+        <a href="${root}projects.html" class="group flex items-center gap-1.5 no-underline">
+          <span class="text-ink-sage-1000 opacity-80 transition group-hover:opacity-100m text-xl mb-1">Cognatix</span>
+          <img src="${root}images/favicon.svg" alt="Cognatix" class="size-5 saturate-0 opacity-80 transition group-hover:saturate-100 group-hover:opacity-100">
         </a>
       </div>
 
@@ -106,7 +106,9 @@ function renderSidebar(ctx) {
 
       <!-- Bottom section -->
       <div class="border-t px-2 py-2">
-        <a href="${root}settings.html" class="sidebar-link ${isActive('settings.html') && ctx.scope === 'global' ? 'active' : ''}">
+        <a href="${root}settings.html" class="sidebar-link ${
+    isActive("settings.html") && ctx.scope === "global" ? "active" : ""
+  }">
           <svg class="lucide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
           Account Settings
         </a>
