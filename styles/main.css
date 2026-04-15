@@ -610,3 +610,9 @@
 .sidebar-link:hover {
   background: #5553;
  }
+
+#topology-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}

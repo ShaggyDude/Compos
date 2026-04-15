@@ -269,4 +269,8 @@ function initLayout(opts = {}) {
 
   if (sidebar) sidebar.innerHTML = renderSidebar(ctx);
   if (header) header.innerHTML = renderHeader(ctx, opts);
+
+  const s = document.createElement('script');
+  s.src = getRoot() + 'scripts/topology.js';
+  document.body.appendChild(s);
 }
