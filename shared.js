@@ -93,7 +93,7 @@ function renderSidebar(ctx) {
     <aside class="sidebar raised flex flex-col h-screen w-56 shrink-0 border-r fixed left-0 top-0 z-30">
       <!-- Logo -->
       <div class="px-6 py-8">
-        <a href="${root}projects.html" class="group flex items-center gap-1.5 no-underline">
+        <a href="${root}projects.html" class="group flex items-center justify-center gap-1.5">
           <span class="text-ink-sage-1000 opacity-80 transition group-hover:opacity-100m text-xl mb-1">Cognatix</span>
           <img src="${root}images/favicon.svg" alt="Cognatix" class="size-5 saturate-0 opacity-80 transition group-hover:saturate-100 group-hover:opacity-100">
         </a>
